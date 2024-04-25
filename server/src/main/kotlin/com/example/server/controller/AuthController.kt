@@ -19,12 +19,10 @@ class AuthController(
     @ResponseStatus(HttpStatus.CREATED)
     fun register(@RequestBody body: AuthBody): LoginResponse {
         val token = authService.register(body.username, body.password)
-        println(token.token)
         return token
     }
 
     @PostMapping("/login")
-    @ResponseStatus(HttpStatus.CREATED)
     fun login(@RequestBody body: AuthBody): LoginResponse {
         return authService.login(body.username, body.password)
     }

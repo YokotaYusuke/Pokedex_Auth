@@ -28,10 +28,10 @@ class DefaultAuthService(
     }
 
     override fun login(username: String, password: String): LoginResponse {
-        val user = userService.findByName(username) ?: throw ApiException(400, "Login failed")
+        val user = userService.findByName(username) ?: throw ApiException(400, "ユーザー名またはパスワードが間違っています")
 
         if (!hashService.checkBcrypt(password, user.password)) {
-            throw ApiException(400, "Login failed")
+            throw ApiException(400, "ユーザー名またはパスワードが間違っています")
         }
 
         val token = tokenService.createToken(user)
