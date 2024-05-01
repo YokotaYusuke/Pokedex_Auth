@@ -25,6 +25,7 @@ class OAuth2ResourceServerSecurityConfig(
                 it
                     .requestMatchers(HttpMethod.POST, "/api/login").permitAll()
                     .requestMatchers(HttpMethod.POST, "/api/register").permitAll()
+                    .requestMatchers("/api/pokemon/favorite").permitAll()
                     .requestMatchers("/api/**").authenticated()
                     .anyRequest().permitAll()
             }
